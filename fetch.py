@@ -40,3 +40,14 @@ print("\n--- Text Reviews ---")
 for index, item in enumerate(reviews_list, start=1):
     print(f"{index}. {item['text']}")
 
+# Simple categorization dictionary
+categories = {
+    'product': ['facility', 'room', 'space', 'wifi', 'books', 'coffee', 'equipment'],
+    'service': ['staff', 'librarian', 'help', 'friendly', 'patient', 'support'],
+    'quality': ['great', 'clean', 'excellent', 'best', 'modern', 'top']
+}
+
+# Tag each review dynamically
+for item in reviews_list:
+    text = item['text'].lower()
+    item['tags'] = [cat for cat, words in categories.items() if any(w in text for w in words)]
